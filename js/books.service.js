@@ -7,7 +7,8 @@
 // const gBooks = _loadBooks()
 
 const gBooks = getDemoBooks()
-let gFilterBy = ''
+let gFilterByTitle = ''
+let gFilterByRating = ''
 
 
 function getDemoBooks() {
@@ -82,15 +83,19 @@ function createBook() {
 //     return arr
 // }
 
-function setFilterBy(value) {
+function setFilterByTitle(value) {
+    gFilterByTitle = value
+}
+
+function setFilterByRating(value) {
     gFilterBy = value
 }
 
 function getFilteredBooks() {
     if (!gFilterBy) return gBooks
 
-    var books = gBooks.filter(book =>
-        book.title.toLowerCase().includes(gFilterBy.toLocaleLowerCase())
+    let booksByTitle = gBooks.filter(book =>
+        book.title.toLowerCase().includes(gFilterByTitle.toLocaleLowerCase())
     )
 
     console.log(books);
@@ -98,8 +103,11 @@ function getFilteredBooks() {
     return books
 }
 
-function resetFilter() {
-    const elInput = document.querySelector('input')
+function resetTitleFilter() {
+    const elInput = document.querySelector('.filter.title')
+    elInput.value = ''
+    gFilterByTitle = ''
+}
     elInput.value = ''
     gFilterBy = ''
 }

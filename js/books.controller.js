@@ -82,14 +82,18 @@ function onDetailBook(bookId) {
     elModal.showModal()
 }
 
-function onSetFilterBy(value) {
-    setFilterBy(value)
+function onSetFilterByTitle(value) {
+    setFilterByTitle(value)
+    getFilteredBooks()
+    renderBooks(getFilteredBooks())
+}
     getFilteredBooks()
     renderBooks(getFilteredBooks())
 }
 
 function onClearFilter() {
-    resetFilter()
+    resetTitleFilter()
+    resetRatingFilter()
     renderBooks(getFilteredBooks())
 }
 
