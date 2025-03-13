@@ -19,21 +19,21 @@ function getDemoBooks() {
             title: 'The Advetures of Lori Ipsi',
             price: 120,
             imgUrl: 'img/red-book.jpg',
-            rating: getRandomInt(1,6)
+            rating: getRandomInt(1, 6)
         },
         {
             id: 'siGN46',
             title: 'World Atlas',
             price: 300,
             imgUrl: 'img/blue-book.gif',
-            rating: getRandomInt(1,6)
+            rating: getRandomInt(1, 6)
         },
         {
             id: 'ap61LU',
             title: 'Zorba the Greek',
             price: 87,
             imgUrl: 'img/green-book.jpg',
-            rating: getRandomInt(1,6)
+            rating: getRandomInt(1, 6)
         }
     ]
 }
@@ -88,19 +88,24 @@ function setFilterByTitle(value) {
 }
 
 function setFilterByRating(value) {
-    gFilterBy = value
+    gFilterByRating = value
 }
 
 function getFilteredBooks() {
-    if (!gFilterBy) return gBooks
+    if (!gFilterByTitle && !gFilterByRating) return gBooks
 
     let booksByTitle = gBooks.filter(book =>
         book.title.toLowerCase().includes(gFilterByTitle.toLocaleLowerCase())
     )
 
-    console.log(books);
+    console.log(booksByTitle);
+    
 
-    return books
+    let booksByRating = booksByTitle.filter(book =>
+        book.rating.toString().toLowerCase().includes(gFilterByRating.toLocaleLowerCase())
+    )
+
+    return booksByRating
 }
 
 function resetTitleFilter() {
@@ -108,8 +113,13 @@ function resetTitleFilter() {
     elInput.value = ''
     gFilterByTitle = ''
 }
+
+function resetRatingFilter() {
+    const elInput = document.querySelector('.filter.rating')
+    console.log(elInput);
+    
     elInput.value = ''
-    gFilterBy = ''
+    gFilterByRating = ''
 }
 
 

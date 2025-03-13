@@ -87,6 +87,8 @@ function onSetFilterByTitle(value) {
     getFilteredBooks()
     renderBooks(getFilteredBooks())
 }
+function onSetFilterByRating(value) {
+    setFilterByRating(value)
     getFilteredBooks()
     renderBooks(getFilteredBooks())
 }
