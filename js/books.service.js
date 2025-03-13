@@ -17,19 +17,22 @@ function getDemoBooks() {
             id: 'bg4J78',
             title: 'The Advetures of Lori Ipsi',
             price: 120,
-            imgUrl: 'img/red-book.jpg'
+            imgUrl: 'img/red-book.jpg',
+            rating: getRandomInt(1,6)
         },
         {
             id: 'siGN46',
             title: 'World Atlas',
             price: 300,
-            imgUrl: 'img/blue-book.gif'
+            imgUrl: 'img/blue-book.gif',
+            rating: getRandomInt(1,6)
         },
         {
             id: 'ap61LU',
             title: 'Zorba the Greek',
             price: 87,
-            imgUrl: 'img/green-book.jpg'
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1,6)
         }
     ]
 }
@@ -68,16 +71,16 @@ function createBook() {
     return { id, title, price, imgUrl }
 }
 
-function _saveBooks(books) {
-    var storageStr = JSON.stringify(books)
+// function _saveBooks(books) {
+//     var storageStr = JSON.stringify(books)
 
-    localStorage.setItem('books', storageStr)
-}
+//     localStorage.setItem('books', storageStr)
+// }
 
-function _loadBooks() {
-    var arr = JSON.parse(localStorage.getItem('books'))
-    return arr
-}
+// function _loadBooks() {
+//     var arr = JSON.parse(localStorage.getItem('books'))
+//     return arr
+// }
 
 function setFilterBy(value) {
     gFilterBy = value
