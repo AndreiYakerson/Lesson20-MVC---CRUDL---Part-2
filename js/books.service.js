@@ -3,9 +3,10 @@
 // localStorage.clear()
 
 
-if (!_loadBooks()) _saveBooks(getDemoBooks())
+// if (!_loadBooks()) _saveBooks(getDemoBooks())
+// const gBooks = _loadBooks()
 
-const gBooks = _loadBooks()
+const gBooks = getDemoBooks()
 let gFilterBy = ''
 
 
