@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Shop</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body onload="init()">
+    <div class="header">
+        <label>Filter:
+            <input oninput="onSetFilterBy(this.value)" type="text" placeholder="Title">
+            <button onclick="onClearFilter()">Clear</button>
+        </label>
+
+        <button class="add-book" onclick="onAddBook()">Add a book</button>
+    </div>
+
+    <table>
+        
+        
+    </table>
+
+    <div class="msg hidden"><span></span></div>
+
+    <dialog>
+        <form method="dialog">
+            <button>x</button>
+            <pre></pre>
+            <img src="">
+        </form>
+    </dialog>
+
+
+    <footer>
+        <p>Cheap: <span>0</span></p>
+        <p>Average: <span>0</span></p>
+        <p>Expensive: <span>0</span></p>
+    </footer>
+
+
+    <script src="js/books.utils.js"></script>
+    <script src="js/books.service.js"></script>
+    <script src="js/books.controller.js"></script>
+</body>
+
+</html>

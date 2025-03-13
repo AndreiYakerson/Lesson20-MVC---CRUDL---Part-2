@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background-color: bisque;
+    text-align: center;
+}
+
+table,
+tr,
+td {
+    border: solid;
+    border-collapse: collapse;
+    padding: 1vw;
+    background-color: lightblue;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    margin-bottom: 80px;
+}
+
+tr  {
+    background-color: lightcoral;
+}
+
+
+tbody button {
+    background-color: yellow;
+    width: 70px;
+    border-radius: 10px;
+    height: 30px;
+    margin: 0 5px 5px 0;
+    font-size: 90%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.add-book {
+    height: 30px;
+    font-size: large;
+    border-radius: 10px;
+    background-color: yellow;
+}
+
+
+img {
+    width: 150px;
+    height: 200px;
+    padding: 10px;
+}
+
+form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    width: 300px;
+    background-color: lightgreen;
+    border-radius: 25px;
+}
+
+dialog {
+    background-color: darkorange;
+    border-radius: 25px;
+}
+
+form button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 0px;
+    border-radius: 5px;
+    background-color: pink;
+}
+
+input {
+    border: none;
+    height: 20px;
+    font-size: 15px;
+    background-color: lightcoral;
+    border-bottom: solid;
+}
+
+label {
+    border: solid 2px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    background-color: lightcoral;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+label button {
+    background-color: yellow;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    
+    background-color: lightgreen;
+    font-weight: bold;
+    font-size: 20px;
+    border: solid;
+    padding: 20px;
+}
+
+footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    
+    justify-content: space-around;
+    background-color: lightcoral;
+    font-size: 20px;
+}
+
