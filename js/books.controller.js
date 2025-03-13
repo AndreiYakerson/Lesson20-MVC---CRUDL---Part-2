@@ -76,6 +76,7 @@ function onDetailBook(bookId) {
     Title: ${book.title}
     Price: ${book.price}
     Img URL: ${book.imgUrl}
+    Raiting: ${book.rating}
     `
     elImg.src = `${book.imgUrl}`
     elModal.showModal()
