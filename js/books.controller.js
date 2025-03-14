@@ -12,6 +12,7 @@ function renderBooks(array) {
     var strHTML = `<tr>
             <th>Title</th>
             <th>Price</th>
+            <th>Rating</th>
             <th>Actions</th>
         </tr> <tbody>`
 
@@ -19,8 +20,8 @@ function renderBooks(array) {
         strHTML += `<tr>
              <td>${book.title}</td>
              <td>${book.price}</td>
+             <td>${'⭐️'.repeat(+book.rating)}</td>
              <td>
-                 <button>Read</button>
                  <button onclick="onDetailBook('${book.id}')">Detail</button>
                  <button onclick="onUpdateBook('${book.id}')">Update</button>
                  <button onclick="onRemoveBook('${book.id}')">Delete</button>
