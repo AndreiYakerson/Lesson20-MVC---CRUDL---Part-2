@@ -88,16 +88,23 @@ function onSetFilterByTitle(value) {
     getFilteredBooks()
     renderBooks(getFilteredBooks())
 }
+
 function onSetFilterByRating(value) {
     setFilterByRating(value)
     getFilteredBooks()
     renderBooks(getFilteredBooks())
 }
 
-function onClearFilter() {
-    resetTitleFilter()
-    resetRatingFilter()
+function onSetFilterByPrice(value) {
+    setFilterByPrice(value)
+    getFilteredBooks()
     renderBooks(getFilteredBooks())
+}
+
+function onClearFilter() {
+    resetFilters()
+    renderClearFilters()
+    renderBooks(gBooks)
 }
 
 function showMsg(msg) {
@@ -141,6 +148,16 @@ function renderStats() {
     elExpansive.innerHTML = expensive
     elAverage.innerHTML = average
     elCheap.innerHTML = cheap
+}
+
+function renderClearFilters() {
+    const elTitleFilter = document.querySelector('.filter.title')
+    const elRatingFilter = document.querySelector('.filter.rating')
+    const elPriceFilter = document.querySelector('.filter.price')
+
+    elTitleFilter.value = ''
+    elRatingFilter.value = ''
+    elPriceFilter.value = ''
 }
 
 
