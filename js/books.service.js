@@ -9,6 +9,7 @@
 const gBooks = getDemoBooks()
 let gFilterByTitle = ''
 let gFilterByRating = ''
+let gFilterByPrice = ''
 
 
 function getDemoBooks() {
@@ -91,36 +92,34 @@ function setFilterByRating(value) {
     gFilterByRating = value
 }
 
+function setFilterByPrice(value) {
+    gFilterByPrice = value
+}
+
 function getFilteredBooks() {
-    if (!gFilterByTitle && !gFilterByRating) return gBooks
+    if (!gFilterByTitle && !gFilterByRating && !gFilterByPrice) return gBooks
 
     let booksByTitle = gBooks.filter(book =>
         book.title.toLowerCase().includes(gFilterByTitle.toLocaleLowerCase())
     )
 
-    console.log(booksByTitle);
-    
-
     let booksByRating = booksByTitle.filter(book =>
         book.rating.toString().toLowerCase().includes(gFilterByRating.toLocaleLowerCase())
     )
 
-    return booksByRating
+    let booksByPrice = booksByRating.filter(book =>
+        book.price.toString().toLowerCase().includes(gFilterByPrice.toLocaleLowerCase())
+    )
+
+    return booksByPrice
 }
 
-function resetTitleFilter() {
-    const elInput = document.querySelector('.filter.title')
-    elInput.value = ''
+function resetFilters() {
     gFilterByTitle = ''
-}
-
-function resetRatingFilter() {
-    const elInput = document.querySelector('.filter.rating')
-    console.log(elInput);
-    
-    elInput.value = ''
+    gFilterByRating = ''
     gFilterByRating = ''
 }
+
 
 
 
