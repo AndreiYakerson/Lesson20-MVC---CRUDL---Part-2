@@ -41,13 +41,13 @@ function getDemoBooks() {
 function removeBook(bookId) {
     const bookIdx = gBooks.findIndex(book => book.id === bookId)
     gBooks.splice(bookIdx, 1)
-    _saveBooks(gBooks)
+    // _saveBooks(gBooks)
 }
 
 function updateBook(bookId) {
     const elBook = gBooks.find(book => book.id === bookId)
     elBook.price = +prompt('Set new price')
-    _saveBooks(gBooks)
+    // _saveBooks(gBooks)
 }
 
 function getBookById(bookId) {
@@ -57,7 +57,7 @@ function getBookById(bookId) {
 
 function addBook(book) {
     gBooks.push(book)
-    _saveBooks(gBooks)
+    // _saveBooks(gBooks)
 }
 
 function createBook() {
