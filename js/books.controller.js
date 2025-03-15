@@ -91,7 +91,9 @@ function onSetFilterByTitle(value) {
     renderBooks(getFilteredBooks())
 }
 
-function onSetFilterByRating(value) {
+function onChangeRating(value) {
+    console.log(value);
+    
     setFilterByRating(value)
     getFilteredBooks()
     renderBooks(getFilteredBooks())
