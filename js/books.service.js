@@ -105,7 +105,6 @@ function setFilterByPrice(value) {
 function getFilteredBooks() {
     
     let books = gBooks
-    console.log(gQueryOptions.sortBy);
     
     if (!gQueryOptions.filterByTitle && !gQueryOptions.filterByRating && !gQueryOptions.filterByPrice && !gQueryOptions.sortBy.sortField) return gBooks
     
@@ -122,12 +121,12 @@ function getFilteredBooks() {
     )
 
     if (gQueryOptions.sortBy.sortField === 'price') {
-const dir = gQueryOptions.sortBy.sortDir ? -1 : 1
+        const dir = gQueryOptions.sortBy.sortDir ? -1 : 1
         books.sort((b1,b2) => (+b1.price - +b2.price) * dir)
     }
     
     if (gQueryOptions.sortBy.sortField === 'rating') {
-const dir = gQueryOptions.sortBy.sortDir ? 1 : -1
+        const dir = gQueryOptions.sortBy.sortDir ? 1 : -1
         books.sort((b1,b2) => (+b1.rating - +b2.rating) * dir)
     }
 
@@ -139,9 +138,11 @@ function resetFilters() {
     gQueryOptions.filterByTitle = ''
     gQueryOptions.filterByRating = ''
     gQueryOptions.filterByPrice = ''
-    gQueryOptions.sortBy = {}
 }
 
+function resetSortBy() {
+    gQueryOptions.sortBy = {}
+}
 
 
 

@@ -137,7 +137,7 @@ function renderStats() {
 
 
     gBooks.forEach(book => {
-        if (book.price > 20) {
+        if (book.price > 200) {
             expensive++
             return
         }
