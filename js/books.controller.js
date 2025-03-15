@@ -2,8 +2,10 @@
 
 
 function init() {
-    renderBooks(gBooks)
+    readQueryParams()
+    renderBooks(getFilteredBooks(gBooks))
     renderStats()
+    renderQueryParams()
 }
 
 function renderBooks(array) {
@@ -55,7 +57,7 @@ function onAddBook() {
     onClearFilter()
     const newBook = createBook()
     console.log(newBook);
-    
+
     if (newBook === undefined) {
         showMsg('Blank title or price!')
         return
@@ -90,18 +92,21 @@ function onSetFilterByTitle(value) {
     setFilterByTitle(value)
     getFilteredBooks()
     renderBooks(getFilteredBooks())
+    setQueryParams()
 }
 
-function onChangeRating(value) {    
+function onChangeRating(value) {
     setFilterByRating(value)
     getFilteredBooks()
     renderBooks(getFilteredBooks())
+    setQueryParams()
 }
 
 function onSetFilterByPrice(value) {
     setFilterByPrice(value)
     getFilteredBooks()
     renderBooks(getFilteredBooks())
+    setQueryParams()
 }
 
 function onClearFilter() {
@@ -110,6 +115,7 @@ function onClearFilter() {
     renderClearSortBy()
     renderClearFilters()
     renderBooks(gBooks)
+    setQueryParams()
 }
 
 function showMsg(msg) {
@@ -161,10 +167,10 @@ function renderClearFilters() {
     const elTitleFilter = document.querySelector('.filter.title')
     const elRatingFilter = document.querySelector('select.rating')
     const elPriceFilter = document.querySelector('.filter.price')
-    
+
     elTitleFilter.value = ''
     elRatingFilter.value = ''
-    elPriceFilter.value = ''    
+    elPriceFilter.value = ''
 }
 
 function renderClearSortBy() {
@@ -191,6 +197,56 @@ function onSortBy() {
     }
 
     renderBooks(getFilteredBooks())
+    setQueryParams()
+}
+
+function setQueryParams() {
+    const queryParams = new URLSearchParams
+
+    queryParams.set('title', gQueryOptions.filterByTitle)
+    queryParams.set('price', gQueryOptions.filterByPrice)
+    queryParams.set('minRating', gQueryOptions.filterByRating)
+    queryParams.set('sortDir', gQueryOptions.sortBy.sortDir)
+    queryParams.set('sortField', gQueryOptions.sortBy.sortField)
+
+
+    const newUrl =
+        window.location.protocol + '//' +
+        window.location.host +
+        window.location.pathname + '?' + queryParams.toString()
+
+    window.history.pushState({path: newUrl}, '' , newUrl)
+}
+
+function readQueryParams() {
+    const queryParams = new URLSearchParams(window.location.search)
+
+    gQueryOptions.filterByTitle = queryParams.get('title') || ''
+    gQueryOptions.filterByPrice = queryParams.get('price') || ''
+    gQueryOptions.filterByRating = queryParams.get('minRating') || ''
+    gQueryOptions.sortBy.sortField = queryParams.get('sortField') || ''
+    gQueryOptions.sortBy.sortDir = queryParams.get('sortDir') || ''
+
+}
+
+function renderQueryParams() {
+
+    const elTitleInput = document.querySelector('.filter.title')
+    const elPriceInput = document.querySelector('.filter.price')
+    const elRatingInput = document.querySelector('.filter.rating')
+    
+    const elSortField = document.querySelector('.sort-field')
+    const elSortDir = document.querySelector('.des-input')
+
+    elTitleInput.value = gQueryOptions.filterByTitle || ''
+    elPriceInput.value = gQueryOptions.filterByPrice || ''
+    elRatingInput.value = gQueryOptions.filterByRating || ''
+
+
+    elSortField.value = gQueryOptions.sortBy.sortField
+    console.log(elSortField.value);
+    
+    elSortDir.checked = gQueryOptions.sortBy.sortDir || ''
 }
 
 
