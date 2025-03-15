@@ -105,6 +105,8 @@ function onSetFilterByPrice(value) {
 
 function onClearFilter() {
     resetFilters()
+    resetSortBy()
+    renderClearSortBy()
     renderClearFilters()
     renderBooks(gBooks)
 }
@@ -132,8 +134,10 @@ function renderStats() {
     let average = 0
     let expensive = 0
 
+
+
     gBooks.forEach(book => {
-        if (book.price > 200) {
+        if (book.price > 20) {
             expensive++
             return
         }
@@ -156,12 +160,18 @@ function renderClearFilters() {
     const elTitleFilter = document.querySelector('.filter.title')
     const elRatingFilter = document.querySelector('select.rating')
     const elPriceFilter = document.querySelector('.filter.price')
-    const elSortBY = document.querySelector('.sort-field')
-
+    
     elTitleFilter.value = ''
     elRatingFilter.value = ''
-    elPriceFilter.value = ''
+    elPriceFilter.value = ''    
+}
+
+function renderClearSortBy() {
+    const elSortBY = document.querySelector('.sort-field')
+    const elDir = document.querySelector('.des-input')
+
     elSortBY.value = ''
+    elDir.checked = false
 }
 
 function onSortBy() {
@@ -174,10 +184,12 @@ function onSortBy() {
     gQueryOptions.sortBy.sortField = sortField
     gQueryOptions.sortBy.sortDir = sortDir
 
-    console.log(gQueryOptions.sortBy.sortField);
-    
+    if (elSortField.value === '') {
+        resetSortBy()
+        renderClearSortBy()
+    }
+
     renderBooks(getFilteredBooks())
-    
 }
 
 
