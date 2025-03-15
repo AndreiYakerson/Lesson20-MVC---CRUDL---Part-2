@@ -59,7 +59,7 @@ header {
     border: solid 2px;
 }
 
-select.price {
+select.rating {
     background-color: yellow;
     border-radius: 10px;
     padding: 5px;
