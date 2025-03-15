@@ -74,6 +74,19 @@ select.rating {
     font-size: 20px;
 }
 
+.sort-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-field {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+
 
 .add-book {
     height: 30px;

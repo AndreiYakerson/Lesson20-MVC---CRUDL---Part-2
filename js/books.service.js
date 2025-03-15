@@ -11,7 +11,9 @@ const gBooks = getDemoBooks()
 let gQueryOptions = {
     filterByTitle: '',
     filterByRating: '',
-    filterByPrice: ''
+    filterByPrice: '',
+    sortBy: {},
+    page: { idx: 0, size: 4 }
 }
 
 
@@ -101,27 +103,41 @@ function setFilterByPrice(value) {
 }
 
 function getFilteredBooks() {
-    if (!gQueryOptions.filterByTitle && !gQueryOptions.filterByRating && !gQueryOptions.filterByPrice) return gBooks
-
-    let booksByTitle = gBooks.filter(book =>
+    
+    let books = gBooks
+    console.log(gQueryOptions.sortBy);
+    
+    if (!gQueryOptions.filterByTitle && !gQueryOptions.filterByRating && !gQueryOptions.filterByPrice && !gQueryOptions.sortBy.sortField) return gBooks
+    
+    books = books.filter(book =>
         book.title.toLowerCase().includes(gQueryOptions.filterByTitle.toLocaleLowerCase())
     )
 
-    let booksByRating = booksByTitle.filter(book =>
+    books = books.filter(book =>
         +book.rating >= +gQueryOptions.filterByRating
     )
 
-    let booksByPrice = booksByRating.filter(book =>
+    books = books.filter(book =>
         book.price.toString().toLowerCase().includes(gQueryOptions.filterByPrice.toLocaleLowerCase())
     )
 
-    return booksByPrice
+    if (gQueryOptions.sortBy.sortField === 'price') {
+        books.sort((b1,b2) => +b1.price - +b2.price)
+    }
+    
+    if (gQueryOptions.sortBy.sortField === 'rating') {
+        books.sort((b1,b2) => +b1.rating - +b2.rating)
+    }
+
+
+    return books
 }
 
 function resetFilters() {
     gQueryOptions.filterByTitle = ''
     gQueryOptions.filterByRating = ''
     gQueryOptions.filterByPrice = ''
+    gQueryOptions.sortBy = {}
 }
 
 

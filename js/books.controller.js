@@ -91,9 +91,7 @@ function onSetFilterByTitle(value) {
     renderBooks(getFilteredBooks())
 }
 
-function onChangeRating(value) {
-    console.log(value);
-    
+function onChangeRating(value) {    
     setFilterByRating(value)
     getFilteredBooks()
     renderBooks(getFilteredBooks())
@@ -158,12 +156,28 @@ function renderClearFilters() {
     const elTitleFilter = document.querySelector('.filter.title')
     const elRatingFilter = document.querySelector('select.rating')
     const elPriceFilter = document.querySelector('.filter.price')
+    const elSortBY = document.querySelector('.sort-field')
 
     elTitleFilter.value = ''
     elRatingFilter.value = ''
     elPriceFilter.value = ''
-    
+    elSortBY.value = ''
 }
 
+function onSortBy() {
+    const elSortField = document.querySelector('.sort-field')
+    const elSortDir = document.querySelector('.des-input')
+
+    const sortField = elSortField.value
+    const sortDir = elSortDir.checked
+
+    gQueryOptions.sortBy.sortField = sortField
+    gQueryOptions.sortBy.sortDir = sortDir
+
+    console.log(gQueryOptions.sortBy.sortField);
+    
+    renderBooks(getFilteredBooks())
+    
+}
 
 
