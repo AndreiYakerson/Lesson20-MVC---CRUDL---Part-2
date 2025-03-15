@@ -38,9 +38,40 @@ tbody button {
     font-size: 90%;
 }
 
-.header {
+.filter-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0 10px 0;
+}
+
+.select-container {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: lightcoral;
+    margin-bottom: 20px;
+    border: solid 2px;
+}
+
+select.price {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.des-container {
+    display: flex;
+}
+
+.des-label {
+    font-size: 20px;
 }
 
 
@@ -49,6 +80,19 @@ tbody button {
     font-size: large;
     border-radius: 10px;
     background-color: yellow;
+}
+
+.btn-container {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.clear-btn {
+    height: 30px;
+    font-size: large;
+    border-radius: 10px;
+    background-color: yellow; 
 }
 
 
@@ -85,14 +129,18 @@ form button {
 
 input {
     border: none;
-    height: 20px;
-    font-size: 15px;
+    height: 30px;
+    font-size: 20px;
     background-color: lightcoral;
     border-bottom: solid;
 }
 
+::placeholder {
+    color: rgb(94, 255, 0);
+}
+
 label {
-    border: solid 2px;
+    /* border: solid 2px; */
     margin-bottom: 10px;
     align-self: flex-start;
     background-color: lightcoral;
