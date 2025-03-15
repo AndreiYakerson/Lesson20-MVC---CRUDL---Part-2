@@ -7,9 +7,12 @@
 // const gBooks = _loadBooks()
 
 const gBooks = getDemoBooks()
-let gFilterByTitle = ''
-let gFilterByRating = ''
-let gFilterByPrice = ''
+
+let gQueryOptions = {
+    filterByTitle: '',
+    filterByRating: '',
+    filterByPrice: ''
+}
 
 
 function getDemoBooks() {
@@ -67,6 +70,7 @@ function createBook() {
     if (!title) return
     const price = prompt('Set price')
     if (!price) return
+    const rating = getRandomIn(1, 6)
 
     const imgUrl = 'img/default-book.jpg'
 
@@ -85,39 +89,39 @@ function createBook() {
 // }
 
 function setFilterByTitle(value) {
-    gFilterByTitle = value
+    gQueryOptions.filterByTitle = value
 }
 
 function setFilterByRating(value) {
-    gFilterByRating = value
+    gQueryOptions.filterByRating = value
 }
 
 function setFilterByPrice(value) {
-    gFilterByPrice = value
+    gQueryOptions.filterByPrice = value
 }
 
 function getFilteredBooks() {
-    if (!gFilterByTitle && !gFilterByRating && !gFilterByPrice) return gBooks
+    if (!gQueryOptions.filterByTitle && !gQueryOptions.filterByRating && !gQueryOptions.filterByPrice) return gBooks
 
     let booksByTitle = gBooks.filter(book =>
-        book.title.toLowerCase().includes(gFilterByTitle.toLocaleLowerCase())
+        book.title.toLowerCase().includes(gQueryOptions.filterByTitle.toLocaleLowerCase())
     )
 
     let booksByRating = booksByTitle.filter(book =>
-        book.rating.toString().toLowerCase().includes(gFilterByRating.toLocaleLowerCase())
+        +book.rating >= +gQueryOptions.filterByRating
     )
 
     let booksByPrice = booksByRating.filter(book =>
-        book.price.toString().toLowerCase().includes(gFilterByPrice.toLocaleLowerCase())
+        book.price.toString().toLowerCase().includes(gQueryOptions.filterByPrice.toLocaleLowerCase())
     )
 
     return booksByPrice
 }
 
 function resetFilters() {
-    gFilterByTitle = ''
-    gFilterByRating = ''
-    gFilterByRating = ''
+    gQueryOptions.filterByTitle = ''
+    gQueryOptions.filterByRating = ''
+    gQueryOptions.filterByRating = ''
 }
 
 
