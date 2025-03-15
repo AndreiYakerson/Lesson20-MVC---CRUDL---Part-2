@@ -52,6 +52,7 @@ function onUpdateBook(bookId) {
 }
 
 function onAddBook() {
+    onClearFilter()
     const newBook = createBook()
     console.log(newBook);
     
