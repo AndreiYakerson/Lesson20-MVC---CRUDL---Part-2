@@ -70,7 +70,7 @@ function createBook() {
 
     const imgUrl = 'img/default-book.jpg'
 
-    return { id, title, price, imgUrl }
+    return { id, title, price, rating, imgUrl }
 }
 
 // function _saveBooks(books) {
