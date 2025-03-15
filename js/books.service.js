@@ -129,7 +129,11 @@ function getFilteredBooks() {
         const dir = gQueryOptions.sortBy.sortDir ? 1 : -1
         books.sort((b1,b2) => (+b1.rating - +b2.rating) * dir)
     }
-
+    
+    if (gQueryOptions.sortBy.sortField === 'title') {
+        const dir = gQueryOptions.sortBy.sortDir ? -1 : 1
+        books.sort((b1,b2) => (b1.title.localeCompare(b2.title)) * dir)
+    }
 
     return books
 }
