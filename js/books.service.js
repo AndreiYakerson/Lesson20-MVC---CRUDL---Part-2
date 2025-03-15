@@ -70,7 +70,7 @@ function createBook() {
     if (!title) return
     const price = prompt('Set price')
     if (!price) return
-    const rating = getRandomIn(1, 6)
+    const rating = getRandomInt(1, 6)
 
     const imgUrl = 'img/default-book.jpg'
 
