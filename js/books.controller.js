@@ -20,7 +20,7 @@ function renderBooks(array) {
         strHTML += `<tr>
              <td>${book.title}</td>
              <td>${book.price}</td>
-             <td>${'⭐️'.repeat(+book.rating)}</td>
+             <td>${'★'.repeat(+book.rating)}</td>
              <td>
                  <button onclick="onDetailBook('${book.id}')">Detail</button>
                  <button onclick="onUpdateBook('${book.id}')">Update</button>
@@ -53,6 +53,8 @@ function onUpdateBook(bookId) {
 
 function onAddBook() {
     const newBook = createBook()
+    console.log(newBook);
+    
     if (newBook === undefined) {
         showMsg('Blank title or price!')
         return
