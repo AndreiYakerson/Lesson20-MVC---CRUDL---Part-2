@@ -121,7 +121,7 @@ function getFilteredBooks() {
 function resetFilters() {
     gQueryOptions.filterByTitle = ''
     gQueryOptions.filterByRating = ''
-    gQueryOptions.filterByRating = ''
+    gQueryOptions.filterByPrice = ''
 }
 
 

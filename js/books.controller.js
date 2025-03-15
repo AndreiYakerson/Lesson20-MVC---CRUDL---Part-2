@@ -156,12 +156,13 @@ function renderStats() {
 
 function renderClearFilters() {
     const elTitleFilter = document.querySelector('.filter.title')
-    const elRatingFilter = document.querySelector('.filter.rating')
+    const elRatingFilter = document.querySelector('select.rating')
     const elPriceFilter = document.querySelector('.filter.price')
 
     elTitleFilter.value = ''
     elRatingFilter.value = ''
     elPriceFilter.value = ''
+    
 }
 
 
