@@ -93,6 +93,7 @@ function onSetFilterByTitle(value) {
     getFilteredBooks()
     renderBooks(getFilteredBooks())
     setQueryParams()
+    showPagesContainer()
 }
 
 function onChangeRating(value) {
@@ -100,6 +101,7 @@ function onChangeRating(value) {
     getFilteredBooks()
     renderBooks(getFilteredBooks())
     setQueryParams()
+    showPagesContainer()
 }
 
 function onSetFilterByPrice(value) {
@@ -107,6 +109,7 @@ function onSetFilterByPrice(value) {
     getFilteredBooks()
     renderBooks(getFilteredBooks())
     setQueryParams()
+    showPagesContainer()
 }
 
 function onClearFilter() {
@@ -116,6 +119,7 @@ function onClearFilter() {
     renderClearFilters()
     renderBooks(gBooks)
     setQueryParams()
+    hidePagesContainer()
 }
 
 function showMsg(msg) {
@@ -194,6 +198,9 @@ function onSortBy() {
     if (elSortField.value === '') {
         resetSortBy()
         renderClearSortBy()
+        hidePagesContainer()
+    } else {
+        showPagesContainer()
     }
 
     renderBooks(getFilteredBooks())
@@ -247,4 +254,38 @@ function renderQueryParams() {
     elSortDir.checked = gQueryOptions.sortBy.sortDir || ''
 }
 
+function onNextPageClick() {
+    nextPageIdx()
+    renderBooks(getFilteredBooks(gBooks))
+    renderPageNum()
 
+}
+
+function onPrevPageClick() {
+    PrevPageIdx()
+    renderBooks(getFilteredBooks(gBooks))
+    renderPageNum()
+}
+
+function renderPageNum() {
+    const elPageNum = document.querySelector('.pages-btn-container p span')
+    elPageNum.innerHTML = getPageIdx() + 1
+}
+
+function hidePagesContainer() {
+    const elPagesContainer = document.querySelector('.pages-btn-container')
+    const elTable = document.querySelector('table')
+
+    console.log(elPagesContainer);
+    
+    elTable.style.marginBottom = '100px'
+    elPagesContainer.style.display = 'none'
+}
+
+function showPagesContainer() {
+    const elPagesContainer = document.querySelector('.pages-btn-container')
+    const elTable = document.querySelector('table')
+
+    elTable.style.marginBottom = '10px'
+    elPagesContainer.style.display = 'flex'
+}

@@ -13,7 +13,7 @@ let gQueryOptions = {
     filterByRating: '',
     filterByPrice: '',
     sortBy: {},
-    page: { idx: 0, size: 4 }
+    page: { idx: 0, size: 5 }
 }
 
 
@@ -21,28 +21,113 @@ function getDemoBooks() {
 
     return [
         {
-            id: 'bg4J78',
+            id: getRandomId(),
             title: 'The Advetures of Lori Ipsi',
             price: 120,
             imgUrl: 'img/red-book.jpg',
             rating: getRandomInt(1, 6)
         },
         {
-            id: 'siGN46',
+            id: getRandomId(),
             title: 'World Atlas',
             price: 300,
             imgUrl: 'img/blue-book.gif',
             rating: getRandomInt(1, 6)
         },
         {
-            id: 'ap61LU',
+            id: getRandomId(),
             title: 'Zorba the Greek',
             price: 87,
             imgUrl: 'img/green-book.jpg',
             rating: getRandomInt(1, 6)
-        }
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
+        {
+            id: getRandomId(),
+            title: 'Zorba the Greek',
+            price: 87,
+            imgUrl: 'img/green-book.jpg',
+            rating: getRandomInt(1, 6)
+        },
     ]
 }
+
 
 function removeBook(bookId) {
     const bookIdx = gBooks.findIndex(book => book.id === bookId)
@@ -103,11 +188,11 @@ function setFilterByPrice(value) {
 }
 
 function getFilteredBooks() {
-    
+
     let books = gBooks
-    
+
     if (!gQueryOptions.filterByTitle && !gQueryOptions.filterByRating && !gQueryOptions.filterByPrice && !gQueryOptions.sortBy.sortField) return gBooks
-    
+
     books = books.filter(book =>
         book.title.toLowerCase().includes(gQueryOptions.filterByTitle.toLocaleLowerCase())
     )
@@ -122,17 +207,22 @@ function getFilteredBooks() {
 
     if (gQueryOptions.sortBy.sortField === 'price') {
         const dir = gQueryOptions.sortBy.sortDir ? -1 : 1
-        books.sort((b1,b2) => (+b1.price - +b2.price) * dir)
+        books.sort((b1, b2) => (+b1.price - +b2.price) * dir)
     }
-    
+
     if (gQueryOptions.sortBy.sortField === 'rating') {
         const dir = gQueryOptions.sortBy.sortDir ? -1 : 1
-        books.sort((b1,b2) => (+b1.rating - +b2.rating) * dir)
+        books.sort((b1, b2) => (+b1.rating - +b2.rating) * dir)
     }
-    
+
     if (gQueryOptions.sortBy.sortField === 'title') {
         const dir = gQueryOptions.sortBy.sortDir ? -1 : 1
-        books.sort((b1,b2) => (b1.title.localeCompare(b2.title)) * dir)
+        books.sort((b1, b2) => (b1.title.localeCompare(b2.title)) * dir)
+    }
+
+    if (gQueryOptions.page.idx !== undefined) {
+        const startIdx = gQueryOptions.page.idx * gQueryOptions.page.size
+        books = books.slice(startIdx, startIdx + gQueryOptions.page.size)
     }
 
     return books
@@ -148,9 +238,33 @@ function resetSortBy() {
     gQueryOptions.sortBy = {}
 }
 
+function nextPageIdx() {
+    const pageIdx = gQueryOptions.page.idx
+    const pageSize = gQueryOptions.page.size
 
+    if (pageIdx + 1 === Math.ceil(gBooks.length / pageSize)) {
+        gQueryOptions.page.idx = 0
+    } else {
+        gQueryOptions.page.idx++
+    }
+    console.log(gQueryOptions.page.idx);
+}
 
+function PrevPageIdx() {
+    const pageIdx = gQueryOptions.page.idx
+    const pageSize = gQueryOptions.page.size
 
+    if (pageIdx === 0) {
+        gQueryOptions.page.idx += Math.ceil((gBooks.length / pageSize) - 1)
+    } else {
+        gQueryOptions.page.idx--
+    }
+    console.log(gQueryOptions.page.idx);
+}
+
+function getPageIdx() {
+    return gQueryOptions.page.idx
+}
 
 
 

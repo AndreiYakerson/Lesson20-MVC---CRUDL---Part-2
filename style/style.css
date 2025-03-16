@@ -21,7 +21,7 @@ td {
     font-size: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
-    margin-bottom: 80px;
+    margin-bottom: 10px;
 }
 
 tr  {
@@ -198,3 +198,14 @@ footer {
     font-size: 20px;
 }
 
+.pages-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 100px;
+}
+
+.pages-btn-container button {
+    background-color: yellow;
+    border-radius: 10px;
+}
