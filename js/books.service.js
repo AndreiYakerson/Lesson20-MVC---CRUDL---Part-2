@@ -126,7 +126,7 @@ function getFilteredBooks() {
     }
     
     if (gQueryOptions.sortBy.sortField === 'rating') {
-        const dir = gQueryOptions.sortBy.sortDir ? 1 : -1
+        const dir = gQueryOptions.sortBy.sortDir ? -1 : 1
         books.sort((b1,b2) => (+b1.rating - +b2.rating) * dir)
     }
     

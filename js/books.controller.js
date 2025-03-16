@@ -242,9 +242,7 @@ function renderQueryParams() {
     elPriceInput.value = gQueryOptions.filterByPrice || ''
     elRatingInput.value = gQueryOptions.filterByRating || ''
 
-
     elSortField.value = gQueryOptions.sortBy.sortField
-    console.log(elSortField.value);
     
     elSortDir.checked = gQueryOptions.sortBy.sortDir || ''
 }
