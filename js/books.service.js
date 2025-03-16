@@ -220,6 +220,10 @@ function getFilteredBooks() {
         books.sort((b1, b2) => (b1.title.localeCompare(b2.title)) * dir)
     }
 
+    return books
+}
+
+function getPagedBooks(books) {
     if (gQueryOptions.page.idx !== undefined) {
         const startIdx = gQueryOptions.page.idx * gQueryOptions.page.size
         books = books.slice(startIdx, startIdx + gQueryOptions.page.size)
@@ -228,6 +232,7 @@ function getFilteredBooks() {
     return books
 }
 
+
 function resetFilters() {
     gQueryOptions.filterByTitle = ''
     gQueryOptions.filterByRating = ''
@@ -235,14 +240,16 @@ function resetFilters() {
 }
 
 function resetSortBy() {
-    gQueryOptions.sortBy = {}
+    gQueryOptions.sortBy.sortField = ''
+    gQueryOptions.sortBy.sortDir = ''
 }
 
 function nextPageIdx() {
     const pageIdx = gQueryOptions.page.idx
     const pageSize = gQueryOptions.page.size
-
-    if (pageIdx + 1 === Math.ceil(gBooks.length / pageSize)) {
+    const filteredBooks = getFilteredBooks()
+    
+    if (pageIdx + 1 === Math.ceil(filteredBooks.length / pageSize)) {
         gQueryOptions.page.idx = 0
     } else {
         gQueryOptions.page.idx++
@@ -253,9 +260,10 @@ function nextPageIdx() {
 function PrevPageIdx() {
     const pageIdx = gQueryOptions.page.idx
     const pageSize = gQueryOptions.page.size
+    const filteredBooks = getFilteredBooks()
 
     if (pageIdx === 0) {
-        gQueryOptions.page.idx += Math.ceil((gBooks.length / pageSize) - 1)
+        gQueryOptions.page.idx += Math.ceil((filteredBooks.length / pageSize) - 1)
     } else {
         gQueryOptions.page.idx--
     }

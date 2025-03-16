@@ -3,9 +3,9 @@
 
 function init() {
     readQueryParams()
-    renderBooks(getFilteredBooks(gBooks))
-    renderStats()
     renderQueryParams()
+    renderStats()
+    renderBooks(getPagedBooks(getFilteredBooks()))
 }
 
 function renderBooks(array) {
@@ -42,7 +42,7 @@ function onRemoveBook(bookId) {
     }
     else return
 
-    renderBooks(gBooks)
+    renderBooks(getFilteredBooks())
     renderStats()
 }
 
@@ -65,7 +65,7 @@ function onAddBook() {
 
 
     addBook(newBook)
-    renderBooks(gBooks)
+    renderBooks(getPagedBooks(getFilteredBooks()))
     renderStats()
     showMsg('The book has added')
 
@@ -91,25 +91,22 @@ function onDetailBook(bookId) {
 function onSetFilterByTitle(value) {
     setFilterByTitle(value)
     getFilteredBooks()
-    renderBooks(getFilteredBooks())
+    renderBooks(getPagedBooks(getFilteredBooks()))
     setQueryParams()
-    showPagesContainer()
 }
 
 function onChangeRating(value) {
     setFilterByRating(value)
     getFilteredBooks()
-    renderBooks(getFilteredBooks())
+    renderBooks(getPagedBooks(getFilteredBooks()))
     setQueryParams()
-    showPagesContainer()
 }
 
 function onSetFilterByPrice(value) {
     setFilterByPrice(value)
     getFilteredBooks()
-    renderBooks(getFilteredBooks())
+    renderBooks(getPagedBooks(getFilteredBooks()))
     setQueryParams()
-    showPagesContainer()
 }
 
 function onClearFilter() {
@@ -117,9 +114,8 @@ function onClearFilter() {
     resetSortBy()
     renderClearSortBy()
     renderClearFilters()
-    renderBooks(gBooks)
+    renderBooks(getPagedBooks(getFilteredBooks()))
     setQueryParams()
-    hidePagesContainer()
 }
 
 function showMsg(msg) {
@@ -198,12 +194,9 @@ function onSortBy() {
     if (elSortField.value === '') {
         resetSortBy()
         renderClearSortBy()
-        hidePagesContainer()
-    } else {
-        showPagesContainer()
     }
 
-    renderBooks(getFilteredBooks())
+    renderBooks(getPagedBooks(getFilteredBooks()))
     setQueryParams()
 }
 
@@ -256,14 +249,13 @@ function renderQueryParams() {
 
 function onNextPageClick() {
     nextPageIdx()
-    renderBooks(getFilteredBooks(gBooks))
+    renderBooks(getPagedBooks(getFilteredBooks()))
     renderPageNum()
-
 }
 
 function onPrevPageClick() {
     PrevPageIdx()
-    renderBooks(getFilteredBooks(gBooks))
+    renderBooks(getPagedBooks(getFilteredBooks()))
     renderPageNum()
 }
 
@@ -272,20 +264,4 @@ function renderPageNum() {
     elPageNum.innerHTML = getPageIdx() + 1
 }
 
-function hidePagesContainer() {
-    const elPagesContainer = document.querySelector('.pages-btn-container')
-    const elTable = document.querySelector('table')
 
-    console.log(elPagesContainer);
-    
-    elTable.style.marginBottom = '100px'
-    elPagesContainer.style.display = 'none'
-}
-
-function showPagesContainer() {
-    const elPagesContainer = document.querySelector('.pages-btn-container')
-    const elTable = document.querySelector('table')
-
-    elTable.style.marginBottom = '10px'
-    elPagesContainer.style.display = 'flex'
-}
