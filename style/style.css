@@ -53,6 +53,7 @@ tbody button {
 header {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
     background-color: lightcoral;
     margin-bottom: 20px;
