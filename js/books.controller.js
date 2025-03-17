@@ -42,13 +42,13 @@ function onRemoveBook(bookId) {
     }
     else return
 
-    renderBooks(getFilteredBooks())
+    renderBooks(getPagedBooks(getFilteredBooks()))
     renderStats()
 }
 
 function onUpdateBook(bookId) {
     updateBook(bookId)
-    renderBooks(getFilteredBooks())
+    renderBooks(getPagedBooks(getFilteredBooks()))
     renderStats()
     showMsg('The book has updated')
 }
@@ -225,7 +225,12 @@ function readQueryParams() {
     gQueryOptions.filterByPrice = queryParams.get('price') || ''
     gQueryOptions.filterByRating = queryParams.get('minRating') || ''
     gQueryOptions.sortBy.sortField = queryParams.get('sortField') || ''
-    gQueryOptions.sortBy.sortDir = queryParams.get('sortDir')
+
+    if (queryParams.get('sortDir') === 'true') {
+        gQueryOptions.sortBy.sortDir = true
+    } else {
+        gQueryOptions.sortBy.sortDir = false        
+    }
 
 }
 
@@ -241,12 +246,9 @@ function renderQueryParams() {
     elTitleInput.value = gQueryOptions.filterByTitle || ''
     elPriceInput.value = gQueryOptions.filterByPrice || ''
     elRatingInput.value = gQueryOptions.filterByRating || ''
-
-    elSortField.value = gQueryOptions.sortBy.sortField
+    elSortField.value = gQueryOptions.sortBy.sortField 
     
-    if (gQueryOptions.sortBy.sortDir === 'true') {
-        elSortDir.checked = true
-    }
+    if (gQueryOptions.sortBy.sortDir) elSortDir.checked = true
     
 }
 
