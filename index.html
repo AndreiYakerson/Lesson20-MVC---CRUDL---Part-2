@@ -27,7 +27,7 @@
             </select>
         </div>
 
-            <div>
+            <div class="sort-container">
                 <div class="select-container">
                     <select class="sort-field" name="sort-by" class="filter rating" onchange="onSortBy()">
                         <option value="">Sort By...</option>
@@ -48,13 +48,14 @@
             <button class="clear-btn" onclick="onClearFilter()">Clear all filters</button>
         </div>
 
-
     </header>
+
 
     <table>
 
-
     </table>
+
+
 
     <div class="pages-btn-container">
         <button onclick="onPrevPageClick()">Prev page</button>
@@ -62,17 +63,18 @@
         <button onclick="onNextPageClick()">Next page</button>
     </div>
 
+
     <div class="msg hidden"><span></span></div>
 
-    <dialog>
-        <form method="dialog">
+    <dialog class="detail-modal">
+        <form class="detail-form" method="dialog">
             <button>x</button>
             <pre></pre>
             <img src="">
         </form>
     </dialog>
 
-<dialog class="add-modal">
+    <dialog class="add-modal">
         <form onsubmit="onSaveNewBook()" class="add-form" method="dialog">
             <h1>Add a book</h1>
             <input class="input add-title" type="text" placeholder="Title">
