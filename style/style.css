@@ -116,7 +116,7 @@ img {
     padding: 10px;
 }
 
-form {
+.detail-form {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -127,12 +127,43 @@ form {
     border-radius: 25px;
 }
 
-dialog {
+.detail-modal {
     background-color: darkorange;
     border-radius: 25px;
 }
 
-form button {
+.add-modal {
+    text-align: center;
+    width: 400px;
+    height: 220px;
+    background-color: darkorange;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-form button {
+    background-color: yellow;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.add-form input {
+    background-color: darkorange;
+}
+
+.add-form h1 {
+    background-color: lightblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 10px;
+    width: 200px;
+    margin: auto;
+}
+
+.detail-form button {
     position: absolute;
     width: 30px;
     height: 30px;
