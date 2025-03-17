@@ -225,7 +225,7 @@ function readQueryParams() {
     gQueryOptions.filterByPrice = queryParams.get('price') || ''
     gQueryOptions.filterByRating = queryParams.get('minRating') || ''
     gQueryOptions.sortBy.sortField = queryParams.get('sortField') || ''
-    gQueryOptions.sortBy.sortDir = queryParams.get('sortDir') || ''
+    gQueryOptions.sortBy.sortDir = queryParams.get('sortDir')
 
 }
 
@@ -244,7 +244,10 @@ function renderQueryParams() {
 
     elSortField.value = gQueryOptions.sortBy.sortField
     
-    elSortDir.checked = gQueryOptions.sortBy.sortDir || ''
+    if (gQueryOptions.sortBy.sortDir === 'true') {
+        elSortDir.checked = true
+    }
+    
 }
 
 function onNextPageClick() {

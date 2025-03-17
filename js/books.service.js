@@ -241,7 +241,7 @@ function resetFilters() {
 
 function resetSortBy() {
     gQueryOptions.sortBy.sortField = ''
-    gQueryOptions.sortBy.sortDir = ''
+    gQueryOptions.sortBy.sortDir = false
 }
 
 function nextPageIdx() {
