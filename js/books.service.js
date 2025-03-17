@@ -151,14 +151,11 @@ function addBook(book) {
     // _saveBooks(gBooks)
 }
 
-function createBook() {
+function createBook(titleValue, priceValue) {
     const id = getRandomId()
-    const title = prompt('Set title')
-    if (!title) return
-    const price = prompt('Set price')
-    if (!price) return
+    const title = titleValue
+    const price = priceValue
     const rating = getRandomInt(1, 6)
-
     const imgUrl = 'img/default-book.jpg'
 
     return { id, title, price, rating, imgUrl }
@@ -248,7 +245,7 @@ function nextPageIdx() {
     const pageIdx = gQueryOptions.page.idx
     const pageSize = gQueryOptions.page.size
     const filteredBooks = getFilteredBooks()
-    
+
     if (pageIdx + 1 === Math.ceil(filteredBooks.length / pageSize)) {
         gQueryOptions.page.idx = 0
     } else {

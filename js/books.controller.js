@@ -54,26 +54,40 @@ function onUpdateBook(bookId) {
 }
 
 function onAddBook() {
-    onClearFilter()
-    const newBook = createBook()
-    console.log(newBook);
+    const elAddModal = document.querySelector('.add-modal')
+    elAddModal.showModal()
+}
 
-    if (newBook === undefined) {
+function onSaveNewBook() {
+    const elInputTitle = document.querySelector('.input.add-title')
+    const elInputPrice = document.querySelector('.input.add-price')
+
+    let title = elInputTitle.value
+    let price = +elInputPrice.value
+
+    const newBook = createBook(title, price)
+    console.log(price);
+    
+
+    if (!title || !price) {
         showMsg('Blank title or price!')
         return
-    }
-
-
+    } 
+    
     addBook(newBook)
     renderBooks(getPagedBooks(getFilteredBooks()))
     renderStats()
     showMsg('The book has added')
 
+    elInputTitle.value = ''
+    elInputPrice.value = ''
 }
+
+
 
 function onDetailBook(bookId) {
     var book = getBookById(bookId)
-    var elModal = document.querySelector('dialog')
+    var elModal = document.querySelector('.detail-modal')
     var elPre = document.querySelector('pre')
     var elImg = document.querySelector('img')
 
@@ -215,7 +229,7 @@ function setQueryParams() {
         window.location.host +
         window.location.pathname + '?' + queryParams.toString()
 
-    window.history.pushState({path: newUrl}, '' , newUrl)
+    window.history.pushState({ path: newUrl }, '', newUrl)
 }
 
 function readQueryParams() {
@@ -229,7 +243,7 @@ function readQueryParams() {
     if (queryParams.get('sortDir') === 'true') {
         gQueryOptions.sortBy.sortDir = true
     } else {
-        gQueryOptions.sortBy.sortDir = false        
+        gQueryOptions.sortBy.sortDir = false
     }
 
 }
@@ -239,17 +253,17 @@ function renderQueryParams() {
     const elTitleInput = document.querySelector('.filter.title')
     const elPriceInput = document.querySelector('.filter.price')
     const elRatingInput = document.querySelector('.filter.rating')
-    
+
     const elSortField = document.querySelector('.sort-field')
     const elSortDir = document.querySelector('.des-input')
 
     elTitleInput.value = gQueryOptions.filterByTitle || ''
     elPriceInput.value = gQueryOptions.filterByPrice || ''
     elRatingInput.value = gQueryOptions.filterByRating || ''
-    elSortField.value = gQueryOptions.sortBy.sortField 
-    
+    elSortField.value = gQueryOptions.sortBy.sortField
+
     if (gQueryOptions.sortBy.sortDir) elSortDir.checked = true
-    
+
 }
 
 function onNextPageClick() {
