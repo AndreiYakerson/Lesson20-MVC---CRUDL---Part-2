@@ -135,9 +135,12 @@ function removeBook(bookId) {
     // _saveBooks(gBooks)
 }
 
-function updateBook(bookId) {
-    const elBook = gBooks.find(book => book.id === bookId)
-    elBook.price = +prompt('Set new price')
+function updateBook(bookId, bookTitle, bookPrice) {
+    const book = gBooks.find(book => book.id === bookId)
+    console.log(book);
+    
+    book.title = bookTitle
+    book.price = bookPrice
     // _saveBooks(gBooks)
 }
 

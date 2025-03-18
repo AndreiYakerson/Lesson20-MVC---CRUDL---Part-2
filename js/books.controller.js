@@ -1,5 +1,6 @@
 'use strict'
 
+let gCurrBookId
 
 function init() {
     readQueryParams()
@@ -25,7 +26,7 @@ function renderBooks(array) {
              <td>${'★'.repeat(+book.rating)}</td>
              <td>
                  <button onclick="onDetailBook('${book.id}')">Detail</button>
-                 <button onclick="onUpdateBook('${book.id}')">Update</button>
+                 <button onclick="onShowUpdateModal('${book.id}')">Update</button>
                  <button onclick="onRemoveBook('${book.id}')">Delete</button>
                  </td>
              </tr>`
@@ -48,11 +49,44 @@ function onRemoveBook(bookId) {
     renderStats()
 }
 
-function onUpdateBook(bookId) {
-    updateBook(bookId)
+function onShowUpdateModal(bookId) {
+    const book = gBooks.find(book => book.id === bookId)
+
+    const elInputTitle = document.querySelector('.input.update-title')
+    const elInputPrice = document.querySelector('.input.update-price')
+
+    const elModal = document.querySelector('.update-modal')
+    elModal.showModal()
+    
+
+    elInputTitle.value = book.title
+    elInputPrice.value = +book.price
+
+    gCurrBookId = bookId
+}
+
+function onUpdateNewBook() {
+
+    const elInputTitle = document.querySelector('.input.update-title')
+    const elInputPrice = document.querySelector('.input.update-price')
+
+
+    let title = elInputTitle.value
+    let price = +elInputPrice.value
+
+    if (!title || !price) {
+        showMsg('Blank title or price!')
+        return
+    }
+    
+    updateBook(gCurrBookId, title, price)
+    
     renderBooks(getPagedBooks(getFilteredBooks()))
     renderStats()
     showMsg('The book has updated')
+
+    elInputTitle.value = ''
+    elInputPrice.value = ''
 }
 
 function onAddBook() {
@@ -69,13 +103,13 @@ function onSaveNewBook() {
 
     const newBook = createBook(title, price)
     console.log(price);
-    
+
 
     if (!title || !price) {
         showMsg('Blank title or price!')
         return
-    } 
-    
+    }
+
     addBook(newBook)
     renderBooks(getPagedBooks(getFilteredBooks()))
     renderStats()

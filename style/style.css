@@ -132,7 +132,7 @@ img {
     border-radius: 25px;
 }
 
-.add-modal {
+.modal {
     text-align: center;
     width: 400px;
     height: 220px;
@@ -148,6 +148,7 @@ img {
 .add-form button {
     background-color: yellow;
     font-size: 20px;
+    height: 40px;
     border-radius: 10px;
 }
 
@@ -155,8 +156,8 @@ img {
     background-color: darkorange;
 }
 
-.add-form h1 {
-    background-color: lightblue;
+.modal h1 {
+    /* background-color: lightblue; */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 10px;
     width: 200px;
