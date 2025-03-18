@@ -13,7 +13,7 @@ let gQueryOptions = {
     filterByRating: '',
     filterByPrice: '',
     sortBy: {},
-    page: { idx: 0, size: 5 }
+    page: { idx: 0, size: 4 }
 }
 
 
