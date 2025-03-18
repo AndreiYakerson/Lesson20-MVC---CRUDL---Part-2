@@ -42,6 +42,8 @@ function onRemoveBook(bookId) {
     }
     else return
 
+    checkPageIdx()
+    renderPageNum()
     renderBooks(getPagedBooks(getFilteredBooks()))
     renderStats()
 }

@@ -271,5 +271,16 @@ function getPageIdx() {
     return gQueryOptions.page.idx
 }
 
+function checkPageIdx() {
+    const pageIdx = gQueryOptions.page.idx
+    const pageSize = gQueryOptions.page.size
+    const filteredBooks = getFilteredBooks()
+
+    if (pageIdx + 1 > Math.ceil(filteredBooks.length / pageSize)) {
+        gQueryOptions.page.idx--
+    }
+    console.log(gQueryOptions.page.idx);
+}
+
 
 
