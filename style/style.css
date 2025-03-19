@@ -30,7 +30,7 @@ tr  {
 
 
 tbody button {
-    background-color: yellow;
+    background-color: lightcoral;
     width: 80px;
     border-radius: 10px;
     height: 30px;
@@ -41,6 +41,7 @@ tbody button {
 .filter-container {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     gap: 10px;
     margin: 10px 0 10px 0;
 }
@@ -53,8 +54,10 @@ tbody button {
 header {
     display: flex;
     justify-content: space-around;
+    gap: 20px;
     flex-wrap: wrap;
     align-items: center;
+
     background-color: lightcoral;
     margin-bottom: 20px;
     border: solid 2px;
@@ -64,34 +67,56 @@ select.rating {
     background-color: yellow;
     border-radius: 10px;
     padding: 5px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .des-container {
     display: flex;
+    /* justify-content: center; */
+    height: 30px;
 }
 
 .des-label {
-    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
 }
 
 .sort-container {
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 20px 0 20px 0;
+
 }
 
 .sort-field {
     background-color: yellow;
     border-radius: 10px;
     padding: 5px;
-    font-size: 18px;
+    font-size: 15px;
+    width: 220px;
+}
+
+.filter.rating {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    width: 220px;
+
 }
 
 
 
 .add-book {
     height: 30px;
-    font-size: large;
+    width: 150px;
+
+    font-size: 20px;
+    margin-bottom: 10px;
     border-radius: 10px;
     background-color: yellow;
 }
@@ -104,7 +129,8 @@ select.rating {
 
 .clear-btn {
     height: 30px;
-    font-size: large;
+    margin-top: 10px;
+    font-size: 15px;
     border-radius: 10px;
     background-color: yellow; 
 }
@@ -173,9 +199,10 @@ img {
     background-color: pink;
 }
 
-input {
+.filter {
     border: none;
     height: 30px;
+    width: 300px;
     font-size: 20px;
     background-color: lightcoral;
     border-bottom: solid;
@@ -191,7 +218,7 @@ label {
     align-self: flex-start;
     background-color: lightcoral;
     padding: 5px;
-    font-size: 15px;
+    font-size: 10px;
     font-weight: bold;
 }
 

@@ -14,38 +14,41 @@
         <div class="filter-container">
             <input class="filter title" oninput="onSetFilterByTitle(this.value)" type="text" placeholder="Choose title">
             <input class="filter price" oninput="onSetFilterByPrice(this.value)" type="number" placeholder="Choose price">
-        </div>
-        
-        <div class="select-container">
-            <select name="rating" class="filter rating" onchange="onChangeRating(this.value)">
-                <option value="">Select min rating</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+            
+                
         </div>
 
+
             <div class="sort-container">
-                <div class="select-container">
-                    <select class="sort-field" name="sort-by" class="filter rating" onchange="onSortBy()">
-                        <option value="">Sort By...</option>
-                        <option value="title">Title</option>
-                        <option value="price">Price</option>
-                        <option value="rating">Rating</option>
+
+                    <select name="rating" class="filter rating" onchange="onChangeRating(this.value)">
+                        <option value="">Select min rating</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
-                </div>
-                
-                <div class="des-container">
-                    <label class="des-label" for="descending">Descending:</label>
-                    <input class="des-input" name="descending" type="checkbox" onchange="onSortBy()">
+
+                    <div class="select-container">
+                        <select class="sort-field" name="sort-by" class="filter rating" onchange="onSortBy()">
+                            <option value="">Sort By...</option>
+                            <option value="title">Title</option>
+                            <option value="price">Price</option>
+                            <option value="rating">Rating</option>
+                        </select>
+                        
+                        <div class="des-container">
+                            <label class="des-label" for="descending">Descending:</label>
+                            <input class="des-input" name="descending" type="checkbox" onchange="onSortBy()">
+                        </div>
+                        
+                        <button class="clear-btn" onclick="onClearFilter()">Clear all filters</button>
                 </div>
             </div>
         
         <div class="btn-container">
             <button class="add-book" onclick="onAddBook()">Add a book</button>
-            <button class="clear-btn" onclick="onClearFilter()">Clear all filters</button>
         </div>
 
     </header>
