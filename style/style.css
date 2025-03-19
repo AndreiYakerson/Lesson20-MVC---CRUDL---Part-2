@@ -106,7 +106,6 @@ select.rating {
     padding: 5px;
     font-size: 15px;
     width: 220px;
-
 }
 
 
@@ -168,6 +167,7 @@ img {
 .add-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
 }
 
@@ -200,6 +200,15 @@ img {
 }
 
 .filter {
+    border: none;
+    height: 30px;
+    width: 300px;
+    font-size: 20px;
+    background-color: lightcoral;
+    border-bottom: solid;
+}
+
+form input {
     border: none;
     height: 30px;
     width: 300px;
