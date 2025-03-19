@@ -52,6 +52,7 @@ function onRemoveBook(bookId) {
 function onShowUpdateModal(bookId) {
     const book = gBooks.find(book => book.id === bookId)
 
+    const elInputRating = document.querySelector('.input.update-rating')
     const elInputTitle = document.querySelector('.input.update-title')
     const elInputPrice = document.querySelector('.input.update-price')
 
@@ -61,6 +62,7 @@ function onShowUpdateModal(bookId) {
 
     elInputTitle.value = book.title
     elInputPrice.value = +book.price
+    elInputRating.value = book.rating
 
     gCurrBookId = bookId
 }
@@ -69,17 +71,20 @@ function onUpdateNewBook() {
 
     const elInputTitle = document.querySelector('.input.update-title')
     const elInputPrice = document.querySelector('.input.update-price')
+    const elInputRating = document.querySelector('.input.update-rating')
 
 
     let title = elInputTitle.value
     let price = +elInputPrice.value
+    let rating = +elInputRating.value
+    
 
     if (!title || !price) {
         showMsg('Blank title or price!')
         return
     }
     
-    updateBook(gCurrBookId, title, price)
+    updateBook(gCurrBookId, title, price,rating)
     
     renderBooks(getPagedBooks(getFilteredBooks()))
     renderStats()
@@ -87,6 +92,7 @@ function onUpdateNewBook() {
 
     elInputTitle.value = ''
     elInputPrice.value = ''
+    elInputRating.value = ''
 }
 
 function onAddBook() {

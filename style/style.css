@@ -134,6 +134,13 @@ select.rating {
     background-color: yellow; 
 }
 
+.update-rating {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    width: 220px;
+}
 
 img {
     width: 150px;
@@ -160,7 +167,7 @@ img {
 .modal {
     text-align: center;
     width: 400px;
-    height: 220px;
+    height: 270px;
     background-color: darkorange;
 }
 
