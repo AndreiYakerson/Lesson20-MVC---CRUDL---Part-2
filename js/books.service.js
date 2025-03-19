@@ -155,11 +155,11 @@ function addBook(book) {
     // _saveBooks(gBooks)
 }
 
-function createBook(titleValue, priceValue) {
+function createBook(titleValue, priceValue,ratingValue) {
     const id = getRandomId()
     const title = titleValue
     const price = priceValue
-    const rating = getRandomInt(1, 6)
+    const rating = ratingValue || getRandomInt(1, 6)
     const imgUrl = 'img/default-book.jpg'
 
     return { id, title, price, rating, imgUrl }

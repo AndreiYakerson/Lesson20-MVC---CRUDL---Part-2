@@ -103,12 +103,13 @@ function onAddBook() {
 function onSaveNewBook() {
     const elInputTitle = document.querySelector('.input.add-title')
     const elInputPrice = document.querySelector('.input.add-price')
+    const elInputRating = document.querySelector('.input.add-rating')
 
     let title = elInputTitle.value
     let price = +elInputPrice.value
+    let rating = +elInputRating.value
 
-    const newBook = createBook(title, price)
-    console.log(price);
+    const newBook = createBook(title, price,rating)
 
 
     if (!title || !price) {
@@ -123,6 +124,7 @@ function onSaveNewBook() {
 
     elInputTitle.value = ''
     elInputPrice.value = ''
+    elInputRating.value = ''
 }
 
 
