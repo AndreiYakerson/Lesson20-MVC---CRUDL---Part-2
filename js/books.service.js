@@ -6,14 +6,13 @@
 if (!_loadBooks()) _saveBooks(getDemoBooks())
 const gBooks = _loadBooks()
 
-const gBooks = getDemoBooks()
 
 let gQueryOptions = {
     filterByTitle: '',
     filterByRating: '',
     filterByPrice: '',
     sortBy: {},
-    page: { idx: 0, size: 4 }
+    page: { idx: 0, size: 10 }
 }
 
 
@@ -172,8 +171,8 @@ function _saveBooks(books) {
 }
 
 function _loadBooks() {
-var arr = JSON.parse(localStorage.getItem('books'))
-return arr
+    var arr = JSON.parse(localStorage.getItem('books'))
+    return arr
 }
 
 function setFilterByTitle(value) {
