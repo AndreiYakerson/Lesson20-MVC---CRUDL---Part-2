@@ -3,8 +3,8 @@
 // localStorage.clear()
 
 
-// if (!_loadBooks()) _saveBooks(getDemoBooks())
-// const gBooks = _loadBooks()
+if (!_loadBooks()) _saveBooks(getDemoBooks())
+const gBooks = _loadBooks()
 
 const gBooks = getDemoBooks()
 
@@ -132,7 +132,7 @@ function getDemoBooks() {
 function removeBook(bookId) {
     const bookIdx = gBooks.findIndex(book => book.id === bookId)
     gBooks.splice(bookIdx, 1)
-    // _saveBooks(gBooks)
+    _saveBooks(gBooks)
 }
 
 function updateBook(bookId, bookTitle, bookPrice,bookRating) {
@@ -142,7 +142,7 @@ function updateBook(bookId, bookTitle, bookPrice,bookRating) {
     book.title = bookTitle
     book.price = bookPrice
     book.rating = bookRating
-    // _saveBooks(gBooks)
+    _saveBooks(gBooks)
 }
 
 function getBookById(bookId) {
@@ -152,7 +152,7 @@ function getBookById(bookId) {
 
 function addBook(book) {
     gBooks.push(book)
-    // _saveBooks(gBooks)
+    _saveBooks(gBooks)
 }
 
 function createBook(titleValue, priceValue,ratingValue) {
@@ -165,16 +165,16 @@ function createBook(titleValue, priceValue,ratingValue) {
     return { id, title, price, rating, imgUrl }
 }
 
-// function _saveBooks(books) {
-//     var storageStr = JSON.stringify(books)
+function _saveBooks(books) {
+    var storageStr = JSON.stringify(books)
 
-//     localStorage.setItem('books', storageStr)
-// }
+    localStorage.setItem('books', storageStr)
+}
 
-// function _loadBooks() {
-//     var arr = JSON.parse(localStorage.getItem('books'))
-//     return arr
-// }
+function _loadBooks() {
+var arr = JSON.parse(localStorage.getItem('books'))
+return arr
+}
 
 function setFilterByTitle(value) {
     gQueryOptions.filterByTitle = value
